@@ -1,0 +1,10 @@
+Tesla V. Edison
+
+  - /                 Startup python code for the game and documentation
+    - /Characters/    Python code describing characters (ex. Tesla)
+    - /Core/          Environment and physics etc. code
+    - /End Screen/    Images of ideas and additions planned for the game, displayed at the end of the demo
+    - /Level Editor/  A program for editing and creating levels for the game
+    - /Objects/       Python code for objects in the game. doors, capacitors, conducting rods, etc.
+    - /Script/        Files containing the conversations, static text, etc.
+
