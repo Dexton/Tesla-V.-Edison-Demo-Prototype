@@ -1,6 +1,7 @@
 import pyglet
 
 from main_menu import MainMenu
+from game_batch import GameBatch
 
 class GameStates:
     MAIN_MENU = 0
@@ -16,6 +17,8 @@ class GameWindow(pyglet.window.Window):
         self.game_state = GameStates.MAIN_MENU
 
         self.main_menu_batch = MainMenu(self, self.width, self.height)
+
+        self.game_batch = GameBatch(self, self.width, self.height)
 
         # this next line makes pyglet call self.update at 120Hz
         # this has to be the last line in __init__
@@ -35,10 +38,17 @@ class GameWindow(pyglet.window.Window):
         if self.game_state == GameStates.MAIN_MENU:
             self.main_menu_batch.on_key_press(symbol, modifiers)
 
+        if self.game_state == GameStates.PLAYING or\
+                self.game_state == GameStates.PAUSED:
+            self.game_batch.on_key_press(symbol, modifiers)
+
     def on_draw(self):
         """ Draw Screen Event Handler """
         self.clear()
 
         if self.game_state == GameStates.MAIN_MENU:
             self.main_menu_batch.draw()
+        if self.game_state == GameStates.PLAYING or\
+                self.game_state == GameStates.PAUSED:
+            self.game_batch.draw()
 
