@@ -1,6 +1,7 @@
 import pyglet
 
 from main_menu import MainMenu
+from pause_menu import PauseMenu
 from game_batch import GameBatch
 
 class GameStates:
@@ -17,6 +18,7 @@ class GameWindow(pyglet.window.Window):
         self.game_state = GameStates.MAIN_MENU
 
         self.main_menu_batch = MainMenu(self, self.width, self.height)
+        self.pause_menu_batch = PauseMenu(self, self.width, self.height)
 
         self.game_batch = GameBatch(self, self.width, self.height)
 
@@ -38,9 +40,11 @@ class GameWindow(pyglet.window.Window):
         if self.game_state == GameStates.MAIN_MENU:
             self.main_menu_batch.on_key_press(symbol, modifiers)
 
-        if self.game_state == GameStates.PLAYING or\
-                self.game_state == GameStates.PAUSED:
+        if self.game_state == GameStates.PLAYING:
             self.game_batch.on_key_press(symbol, modifiers)
+
+        if self.game_state == GameStates.PAUSED:
+            self.pause_menu_batch.on_key_press(symbol, modifiers)
 
     def on_draw(self):
         """ Draw Screen Event Handler """
@@ -48,7 +52,8 @@ class GameWindow(pyglet.window.Window):
 
         if self.game_state == GameStates.MAIN_MENU:
             self.main_menu_batch.draw()
-        if self.game_state == GameStates.PLAYING or\
-                self.game_state == GameStates.PAUSED:
+        if self.game_state == GameStates.PLAYING:
             self.game_batch.draw()
+        if self.game_state == GameStates.PAUSED:
+            self.pause_menu_batch.draw()
 

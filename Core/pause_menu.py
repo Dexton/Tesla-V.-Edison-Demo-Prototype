@@ -23,7 +23,7 @@ class PauseMenu(pyglet.graphics.Batch):
         self.options = ['Continue', 'Main Menu', 'Exit']
         self.option_labels = list()
 
-        self.title = pyglet.text.Label(text='Tesla vs. Edison',
+        self.title = pyglet.text.Label(text='Game Paused',
                                        x=width/2, y=height - 120,
                                        anchor_x='center',
                                        anchor_y='top',
@@ -52,26 +52,35 @@ class PauseMenu(pyglet.graphics.Batch):
     def on_key_press(self, symbol, modifiers):
         """ Handels key presses for the menu """
 
-        if symbol == key.ENTER:
-            if self.selected_option == 'Exit':
-                # TODO: Confirm this
-                pyglet.app.exit()
-                return
-            if self.selected_option == 'Main Menu':
-                self.window.game_state = game.GameStates.MAIN_MENU
-                return
-            if self.selected_option == 'Continue':
-                self.window.game_state = game.GameStates.PLAYING
-                return
-
+        # Deselect current option
         curr_selected_idx = self.options.index(self.selected_option)
         self.option_labels[curr_selected_idx].color = PauseMenu.DESELECTED_COLOR
 
+        if symbol == key.ENTER:
+            if self.selected_option == 'Exit':
+                # TODO: Confirm exit
+                pyglet.app.exit()
+                return
+            if self.selected_option == 'Main Menu':
+                # TODO: Confirm end game
+                self.window.game_state = game.GameStates.MAIN_MENU
+            if self.selected_option == 'Continue':
+                self.window.game_state = game.GameStates.PLAYING
+
+            # Reset selected option
+            self.selected_option = self.options[0]
+            curr_selected_idx = 0
+            self.option_labels[curr_selected_idx].color = PauseMenu.SELECTED_COLOR
+            return
+
+        # Move selection
         if symbol == key.UP:
             curr_selected_idx -= 1
         if symbol == key.DOWN:
             curr_selected_idx += 1
 
+
+        # Select new option
         curr_selected_idx = curr_selected_idx % len(self.options)
 
         self.selected_option = self.options[curr_selected_idx]

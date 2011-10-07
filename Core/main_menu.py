@@ -61,7 +61,7 @@ class MainMenu(pyglet.graphics.Batch):
                 self.window.game_state = game.GameStates.GAME_OVER
 
         curr_selected_idx = self.options.index(self.selected_option)
-        self.option_labels[curr_selected_idx].color = PauseMenu.DESELECTED_COLOR
+        self.option_labels[curr_selected_idx].color = MainMenu.DESELECTED_COLOR
 
         if symbol == key.UP:
             curr_selected_idx -= 1
