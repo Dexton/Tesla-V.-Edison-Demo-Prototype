@@ -1,0 +1,8 @@
+/Core/
+
+This folder contains all the core code pertaining to the game.
+
+game.py - The window class, shows the various screens and handles window updates and key presses(sends them to the appropriate handlers, eg. the MainMenu class)
+game_batch.py - Handles the game graphics
+main_menu.py - Describes the main menu and handles key presses
+pause_menu.py - Same as main_menu.py except handles the pause menu, duh

@@ -1,5 +1,6 @@
 Tesla V. Edison
 
+Folder setup
   - /                 Startup python code for the game and documentation
     - /Characters/    Python code describing characters (ex. Tesla)
     - /Core/          Environment and physics etc. code
@@ -8,3 +9,4 @@ Tesla V. Edison
     - /Objects/       Python code for objects in the game. doors, capacitors, conducting rods, etc.
     - /Script/        Files containing the conversations, static text, etc.
 
+tesla_v_edison.py - Starts the appropriate classes etc.
