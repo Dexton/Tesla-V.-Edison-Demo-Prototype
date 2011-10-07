@@ -15,7 +15,7 @@ class GameWindow(pyglet.window.Window):
 
         self.game_state = GameStates.MAIN_MENU
 
-        self.main_menu_batch = MainMenu(self.width, self.height)
+        self.main_menu_batch = MainMenu(self, self.width, self.height)
 
         # this next line makes pyglet call self.update at 120Hz
         # this has to be the last line in __init__
@@ -31,6 +31,9 @@ class GameWindow(pyglet.window.Window):
             symbol: the symbol(key) pressed
             modifiers: the extra keys pressed (ex. Ctrl or Alt)
         """
+
+        if self.game_state == GameStates.MAIN_MENU:
+            self.main_menu_batch.on_key_press(symbol, modifiers)
 
     def on_draw(self):
         """ Draw Screen Event Handler """
