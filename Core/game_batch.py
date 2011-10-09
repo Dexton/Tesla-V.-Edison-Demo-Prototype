@@ -2,7 +2,6 @@ import pyglet
 from pyglet.window import key
 
 import game
-from pause_menu import PauseMenu
 
 class GameBatch(pyglet.graphics.Batch):
     """ The batch of game graphics, also handles the updates of the positions etc. """

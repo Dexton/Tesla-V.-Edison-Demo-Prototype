@@ -1,7 +1,5 @@
 import pyglet
 
-from main_menu import MainMenu
-from pause_menu import PauseMenu
 from game_batch import GameBatch
 
 class GameStates:
@@ -17,8 +15,8 @@ class GameWindow(pyglet.window.Window):
 
         self.game_state = GameStates.MAIN_MENU
 
-        self.main_menu_batch = MainMenu(self, self.width, self.height)
-        self.pause_menu_batch = PauseMenu(self, self.width, self.height)
+        #self.main_menu_batch = MainMenu(self, self.width, self.height)
+        #self.pause_menu_batch = PauseMenu(self, self.width, self.height)
 
         self.game_batch = GameBatch(self, self.width, self.height)
 

@@ -6,6 +6,7 @@ Folder setup
     - /Core/          Environment and physics etc. code
     - /End Screen/    Images of ideas and additions planned for the game, displayed at the end of the demo
     - /Level Editor/  A program for editing and creating levels for the game
+    - /Levels/        Various pyglet graphics batches containing the layout and graphics for each level, loaded from tesla_v_edison.py
     - /Objects/       Python code for objects in the game. doors, capacitors, conducting rods, etc.
     - /Script/        Files containing the conversations, static text, etc.
 
